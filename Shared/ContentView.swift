@@ -20,7 +20,7 @@ struct AnalogClockContentView: View {
         #if os(macOS)
         let clockConfig = AnalogClockConfiguration(backgroundColor: Color(.sRGB, red: 255, green: 255, blue: 255, opacity: 0),
                                                    tickColor: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 1),
-                                                   secondsPointerColor: Color(NSColor.green))
+                                                   secondsPointerColor: Color(NSColor.red))
         #elseif os(iOS)
         let clockConfig = AnalogClockConfiguration(backgroundColor: Color(.sRGB, red: 255, green: 255, blue: 255, opacity: 0),
                                                    tickColor: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 1),

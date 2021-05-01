@@ -27,9 +27,22 @@ public struct AnalogClock: View {
                 ForEach(0..<60*4) { tickIndex in
                     self.tick(at: tickIndex)
                 }
-                Pointer()
+                
+
+                HoursHand()
+                    .stroke(Color(.black), lineWidth: 7)
+                    .rotationEffect(Angle.degrees(Double(time)/60/60 * 360/12))
+                
+                // Minutes
+                MinutesHand()
+                    .stroke(Color(.black), lineWidth: 7)
+                    .rotationEffect(Angle.degrees(Double(time)/60 * 360/60))
+
+                // Seconds
+                SecondsHand()
                     .stroke(configuration.secondsPointerColor, lineWidth: tickWidth)
                     .rotationEffect(Angle.degrees(Double(time) * 360/60))
+
                 
             }.cornerRadius(g.size.width / 2)
         }
@@ -46,9 +59,9 @@ public struct AnalogClock: View {
         .rotationEffect(Angle(degrees: Double(index)/240 * 360))
     }
     
-    private struct Pointer: Shape {
+    private struct SecondsHand: Shape {
         
-        private let circleRadius: CGFloat = 3
+        let circleRadius: CGFloat = 3
         
         func path(in rect: CGRect) -> Path {
             Path { p in
@@ -60,11 +73,40 @@ public struct AnalogClock: View {
             }
         }
     }
+    
+    private struct MinutesHand: Shape {
+        
+        let circleRadius: CGFloat = 3
+        
+        func path(in rect: CGRect) -> Path {
+            Path { p in
+                p.move(to: CGPoint(x: rect.midX, y: rect.minY))
+                p.addLine(to: CGPoint(x: rect.midX, y: rect.midY - circleRadius))
+                p.addEllipse(in: CGRect(center: rect.center, radius: circleRadius))
+                p.move(to: CGPoint(x: rect.midX, y: rect.midY + circleRadius))
+                
+            }
+        }
+    }
+    
+    private struct HoursHand: Shape {
+        
+        let circleRadius: CGFloat = 3
+        
+        func path(in rect: CGRect) -> Path {
+            Path { p in
+                p.move(to: CGPoint(x: rect.midX, y: rect.height/6))
+                p.addLine(to: CGPoint(x: rect.midX, y: rect.midY - circleRadius))
+                p.addEllipse(in: CGRect(center: rect.center, radius: circleRadius))
+                p.move(to: CGPoint(x: rect.midX, y: rect.midY + circleRadius))
+            }
+        }
+    }
 }
 
 struct AnalogClock_Previews: PreviewProvider {
     static var previews: some View {
-        AnalogClock(seconds: 10,
+        AnalogClock(seconds: 5400,
                     configuration: AnalogClockConfiguration(backgroundColor: Color(.sRGB, red: 255, green: 255, blue: 255, opacity: 1),
                                                             tickColor: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 1),
                                                             secondsPointerColor: Color(.sRGB, red: 255, green: 0, blue: 0, opacity: 1)))
