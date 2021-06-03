@@ -8,7 +8,8 @@
 import SwiftUI
 
 class StopWatch: ObservableObject {
-    @Published var counter: TimeInterval = 0
+    static let now = Date()
+    @Published var counter: TimeInterval = Double(TimeZone.current.secondsFromGMT(for: now)) + now.timeIntervalSince1970
     private var timer: Timer?
     init() {
     }
