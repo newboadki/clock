@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import ClockUI
 
 @main
 struct ClockApp: App {
     var body: some Scene {
         WindowGroup {
-            AnalogClockContentView(stopWatch: StopWatch())
+            AnalogClockContentView(stopWatch: StopWatch(),
+                                   configuration: Config.default())
                 .frame(width: 300, height: 300)
         }
     }

@@ -88,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0009358F287B195F00D61FF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		00156011263C85ED000854E2 /* ClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockApp.swift; sourceTree = "<group>"; };
 		00156012263C85ED000854E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		00156013263C85F0000854E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		0015600B263C85ED000854E2 = {
 			isa = PBXGroup;
 			children = (
+				0009358F287B195F00D61FF8 /* README.md */,
 				00156010263C85ED000854E2 /* Shared */,
 				0015601A263C85F0000854E2 /* iOS */,
 				00156021263C85F0000854E2 /* macOS */,

@@ -7,20 +7,31 @@
 
 import SwiftUI
 
-class StopWatch: ObservableObject {
+final class StopWatch: ObservableObject {
+    
+    // MARK: - Internal properties
+    
     static let now = Date()
-    @Published var counter: TimeInterval = Double(TimeZone.current.secondsFromGMT(for: now)) + now.timeIntervalSince1970
+    
+    @Published
+    var counter: TimeInterval = Double(TimeZone.current.secondsFromGMT(for: now)) + now.timeIntervalSince1970
+    
+    // MARK: - Private properties
+    
     private var timer: Timer?
-    init() {
-    }
+    
+    // MARK: - Initializers
+    
+    init() {}
+    
+    // MARK: - API
     
     func start() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1,
                                           repeats: true,
-                                          block: { t in
+                                          block: { _ in
                                                 self.counter += 1
                                           })
-
     }
     
     func stop() {
